@@ -4,129 +4,128 @@
 
 ![Security Policy](https://img.shields.io/badge/SECURITY%20POLICY-09485A?style=flat-square) ![Coordinated Disclosure](https://img.shields.io/badge/COORDINATED%20DISCLOSURE-09485A?style=flat-square) ![Private Reporting](https://img.shields.io/badge/PRIVATE%20REPORTING-09485A?style=flat-square)
 
-This document defines the default vulnerability reporting and handling policy for public repositories maintained by **DFerreira-pro**, unless an individual repository provides a more specific `SECURITY.md`. It applies to publicly released source code, scripts, documentation and other published project artifacts. It does **not** authorize testing of third-party, customer or production systems.
+This policy applies to public source code, scripts, documentation and releases under `DFerreira-pro`. Repository-specific security policies may establish additional or stricter requirements. Publication does not authorize testing of customer, third-party or production environments.
 
 ---
 
-## 1. Security Reporting Channel
+## 1. Private Vulnerability Reporting
 
-**Report suspected vulnerabilities privately, using the affected repository's GitHub security advisory interface.**
+**Report suspected vulnerabilities privately through the affected repository's GitHub security advisory interface.**
 
-1. Open the affected repository.
-2. Select **Security and quality → Advisories → Report a vulnerability** (the exact labels may vary).
-3. Submit the report privately, with the information described below.
+1. Open the affected repository and navigate to **Security / Advisories**.
+2. Select **Report a vulnerability**, where private vulnerability reporting is enabled.
+3. Provide a sanitized report using the criteria in Section 2.
 
-GitHub's private vulnerability reporting feature must be enabled for the affected repository for this channel to be available. If it is unavailable, open a **non-sensitive** issue asking the maintainer to establish a private reporting channel. **Do not include vulnerability details, exploit code, credentials or customer data in that public issue.**
+When private reporting is unavailable, open a public Issue requesting a secure reporting channel **without disclosing the vulnerability, exploit details, credentials or protected data**. Do not send sensitive reports through unrelated personal or business channels.
 
-![Attention: Review Required](https://raw.githubusercontent.com/DFerreira-pro/.github/main/assets/attention.png)
+![Attention — review required](https://raw.githubusercontent.com/DFerreira-pro/.github/main/assets/attention.png)
 
-**Do not report exploitable vulnerabilities in public Issues, Discussions, Pull Requests or comments before coordinated disclosure.** Avoid contacting maintainers through unrelated personal or business channels.
+**Do not publish exploitable findings in Issues, Discussions, Pull Requests or comments before coordinated disclosure.**
 
-## 2. What to Include in a Private Report
+## 2. Report Content & Evidence
 
-Provide enough detail to support a secure and reproducible assessment:
+Include sufficient information for an authorized, reproducible assessment:
 
-- Affected repository, component, version, release or commit identifier.
-- Clear vulnerability summary and its potential security impact.
-- Preconditions, required privileges, affected configurations and assumed threat model.
+- Affected repository, component, version, release or commit.
+- Vulnerability description and plausible security impact.
+- Preconditions, privileges, configuration assumptions and exposure conditions.
 - Minimal, non-destructive reproduction steps or a sanitized proof of concept.
-- Relevant logs, screenshots and evidence with secrets and personal data redacted.
-- Suggested mitigation or remediation, if available.
-- Whether the issue may already have been publicly disclosed or actively exploited.
+- Relevant redacted logs, screenshots and supporting evidence.
+- Known mitigations, potential fixes and any earlier public disclosure.
 
-Do not upload live credentials, production databases, customer data, private keys or unredacted internal configurations. If such evidence is essential, request a secure transfer arrangement first.
+Never attach active credentials, private keys, production databases, customer information or unredacted internal configurations. Arrange an appropriate secure transfer method before sharing evidence that cannot be safely sanitized.
 
-## 3. Scope and Support Boundaries
+## 3. Scope & Support Boundaries
 
-| Area | Scope |
-| --- | --- |
-| Public code and automation | Security weaknesses introduced by code published in the affected repository. |
-| Deployment and operational scripts | Unsafe defaults, privilege misuse, credential exposure or insecure execution attributable to the published artifacts. |
-| Governance and assessment tools | Vulnerabilities affecting data handling, confidentiality, integrity or authorization within published implementations. |
-| Examples and documentation | Materially unsafe guidance or examples that could reasonably lead to insecure deployment. |
-| Third-party platforms and dependencies | Report upstream vulnerabilities to the appropriate vendor or maintainer; report repository-specific insecure use here. |
-| Customer systems and private environments | **Out of scope.** No permission to test or disclose these systems is granted. |
+| Area | Policy scope |
+| :--- | :--- |
+| **Published source and scripts** | Vulnerabilities introduced by the repository's own code and configurations. |
+| **Infrastructure automation** | Insecure defaults, excessive privileges, secret exposure and unsafe deployment behavior in published artifacts. |
+| **Governance and assessment tools** | Unauthorized access, integrity failures and confidential-data exposure in published implementations. |
+| **Documentation and examples** | Materially unsafe instructions or exposed sensitive configuration. |
+| **Third-party dependencies** | Report upstream defects to their maintainers; report unsafe use introduced by this repository here. |
+| **Customer, private or production systems** | Outside scope. No authorization for testing or disclosure is granted. |
 
-A public repository does not imply that all past releases, experimental branches or third-party dependencies receive ongoing security support. Supported versions, when applicable, are defined in each project's release notes or repository-specific security policy. Where no supported-version statement exists, reports will be evaluated on a best-effort basis.
+Maintenance commitments apply only to versions expressly designated as supported by the relevant repository. Otherwise, reports are reviewed on a best-effort basis; no response-time or remediation SLA is established.
 
-## 4. Coordinated Disclosure Process
+## 4. Coordinated Disclosure Procedure
 
-The maintainer aims to handle valid reports through the following stages:
+Apply the following process to actionable reports, proportionate to their severity and available evidence:
 
-1. **Intake:** receive the private report and confirm that sufficient information is available.
-2. **Triage:** assess reproducibility, affected scope, exploitability and impact.
-3. **Containment:** identify short-term mitigations when appropriate.
-4. **Remediation:** prepare and review a targeted fix or documentation correction.
-5. **Validation:** test the correction and check for regressions.
-6. **Disclosure:** coordinate a security advisory, patch notes or public notice when justified and safe.
-7. **Closure:** document decisions and any follow-up controls.
+| Stage | Required activity |
+| :--- | :--- |
+| **Intake** | Register the private report and determine whether sufficient information is available. |
+| **Triage** | Establish scope, reproducibility, exploitability and impact. |
+| **Containment** | Identify restrictions or interim mitigations where warranted. |
+| **Remediation** | Prepare a targeted code, configuration or documentation correction. |
+| **Validation** | Test the correction and relevant regression scenarios. |
+| **Disclosure** | Coordinate advisories or release notes after evaluating residual risk and patch availability. |
+| **Closure** | Record resolution, unresolved limitations and follow-up actions. |
 
-There is **no guaranteed response or remediation service-level agreement** for these independently maintained projects. Reasonable efforts will be made to acknowledge actionable reports and communicate material updates. Disclosure timing should be coordinated based on severity, exploitability, patch availability and potential harm.
+Do not publish technical exploitation details before appropriate containment or mitigation has been considered. Coordinate disclosure timing according to impact, exploitability and safety; do not imply a fixed remediation deadline.
 
-## 5. Severity and Prioritization
+## 5. Severity & Prioritization
 
-Severity is evaluated using context, not solely a scanner score. Relevant factors include confidentiality, integrity, availability, required privileges, attack complexity, exposure, exploit maturity and realistic deployment conditions. CVSS may be used when appropriate, but is not mandatory.
+Assess impact in context, including confidentiality, integrity, availability, required privileges, attack complexity, network exposure and realistic deployment conditions. Use CVSS where suitable; a scanner score alone does not determine priority.
 
-| Classification | Typical handling |
-| --- | --- |
-| Critical | Immediate risk review; restrict disclosure and prioritize containment or correction. |
-| High | Prioritized investigation and remediation planning. |
-| Medium | Scheduled validation and risk-based correction. |
-| Low / Informational | Documentation, hardening or backlog treatment as appropriate. |
+| Severity | Handling requirement |
+| :--- | :--- |
+| **Critical** | Restrict disclosure, assess immediate containment and prioritize remediation. |
+| **High** | Prioritize investigation, mitigation and corrective planning. |
+| **Medium** | Validate impact and schedule risk-based corrective action. |
+| **Low / Informational** | Address through documentation, hardening or maintenance planning. |
 
-![Critical: Stop and Remediate](https://raw.githubusercontent.com/DFerreira-pro/.github/main/assets/critical.png)
+![Critical — stop and remediate](https://raw.githubusercontent.com/DFerreira-pro/.github/main/assets/critical.png)
 
-**Stop public release or deployment of affected artifacts when active credential exposure, unauthorized data disclosure, a credible critical exploit path or an equivalent severe risk is confirmed.** Revoke or rotate compromised credentials promptly; removing them from a current file alone does not remove them from Git history.
+**Suspend release or deployment** when active credential exposure, unauthorized disclosure, a credible critical exploitation path or equivalent severe risk is confirmed. Revoke or rotate compromised credentials; removing them from the latest revision does not eliminate them from Git history.
 
-## 6. Researcher Conduct and Safe Testing
+## 6. Authorized Research & Safe Testing
 
-Security research must remain lawful, authorized and proportionate. Reporters are requested to:
+- Test only systems owned by the researcher or explicitly authorized for assessment.
+- Use isolated environments and synthetic data whenever practical.
+- Avoid disrupting services, collecting unrelated data, establishing persistence, or accessing privileges beyond the authorized test.
+- Minimize, sanitize and protect evidence; stop immediately if unexpected sensitive information is encountered.
+- Report findings privately through the designated channel.
 
-- Test only assets they own or are explicitly authorized to assess.
-- Prefer isolated environments and synthetic data.
-- Avoid service disruption, persistence, privilege escalation beyond what is necessary for proof, social engineering and data exfiltration.
-- Minimize data access, retain only essential sanitized evidence and protect it against disclosure.
-- Stop testing and notify the maintainer privately if unintended sensitive information is encountered.
+**No bug bounty, monetary reward, authorization to test third-party systems or legal safe-harbor commitment is established by this policy.**
 
-**This policy is not a bug bounty program, permission to attack systems or a promise of safe harbor.** No rewards, payments or response-time commitments are implied.
+## 7. Secure Development & Release Controls
 
-## 7. Secure Development and Release Expectations
+Apply the following safeguards according to project risk:
 
-Repository maintainers and contributors should apply security measures proportional to the project's risk:
+- **Secrets:** store credentials outside the repository; inspect committed files and history before publication.
+- **Access:** enforce least privilege for accounts, tokens, applications and GitHub Actions.
+- **Dependencies:** evaluate advisories and validate compatibility before accepting security updates.
+- **Change authorization:** retain owner control of merge, release and deployment decisions.
+- **Supply chain:** verify external downloads and dependencies where feasible; avoid untrusted remote execution.
+- **Infrastructure:** document platform requirements, privileges, changes, service exposure, verification and recovery.
+- **Privacy:** sanitize logs, screenshots, example data, author metadata and Git history.
+- **AI-assisted work:** subject generated code and configurations to the same review and validation as other contributions.
 
-- **Secrets:** use approved secret storage; never commit plaintext credentials, keys or tokens.
-- **Least privilege:** minimize permissions for scripts, CI/CD workflows and GitHub tokens.
-- **Dependencies:** review vulnerability alerts and update affected components after compatibility testing.
-- **Changes:** prefer reviewed Pull Requests and protected branches where supported.
-- **Supply chain:** pin or validate dependencies and external downloads when practical; avoid unverified remote execution.
-- **Infrastructure automation:** document prerequisites, supported platforms, privileges, expected changes, rollback and post-deployment checks.
-- **Privacy:** sanitize logs, screenshots, sample data, metadata and Git history before publishing.
-- **AI-assisted work:** subject generated code and configuration to the same review and testing requirements as manually written work.
+A successful test, published README or release badge does not constitute certification or approval for production use.
 
-The presence of a README, badge, test script or published release **does not certify a project as production-ready**. Production suitability must be independently evaluated for the intended environment.
+## 8. Sensitive Data Exposure & Incident Response
 
-## 8. Handling Sensitive Information and Security Incidents
+On suspected disclosure or incident:
 
-If sensitive material is accidentally committed or a credible security issue is identified:
+1. Contain access and prevent further distribution where practical.
+2. Revoke or rotate affected secrets immediately when appropriate.
+3. Determine exposure, impacted systems, customers and third parties.
+4. Remediate active files and inspect prior commits, branches, forks, caches and derived artifacts.
+5. Preserve necessary evidence securely and assess legal, contractual and regulatory duties.
+6. Authorize external communication only after evaluating the risk and corrective measures.
 
-1. Limit further distribution and restrict affected access where possible.
-2. Revoke or rotate exposed secrets immediately when applicable.
-3. Assess whether customers, third parties or production assets could be impacted.
-4. Remediate the current repository and investigate Git history, forks, caches and derivative artifacts.
-5. Preserve necessary evidence securely and follow legal, contractual or regulatory notification obligations where applicable.
-6. Coordinate any public statement or advisory only after risk assessment.
+History rewriting does not guarantee deletion of objects retained by a hosting provider or copied by third parties. Escalate residual exposure through the appropriate platform support process.
 
-History rewriting may not remove content already copied or retained by hosting platforms or third parties. Escalate unresolved sensitive-data retention to the relevant platform support channel.
+## 9. Policy Authority & Exceptions
 
-## 9. Policy Ownership and Exceptions
+**Repository owner:** [DFerreira-pro](https://github.com/DFerreira-pro)
 
-**Maintainer:** [DFerreira-pro](https://github.com/DFerreira-pro)
+Apply the repository-specific `SECURITY.md` whenever it defines requirements for the affected project. Record exceptions with approval, justification, limited scope, residual risk and review conditions. Exceptions do not override legal obligations, third-party rights or access authorization requirements.
 
-This is the default security policy. Individual repositories may define more specific supported versions, reporting procedures and technical requirements. The more specific repository policy takes precedence where applicable.
-
-Changes to this policy are versioned through Git. Exceptions should be justified, limited in scope and reviewed before adoption; a documented exception does not waive applicable legal, contractual or security obligations.
+Document updates through normal version control and apply the current policy to new reports.
 
 ---
 
 **Professional website:** [Linksafe TI](https://linksafe.com.br)  
-**Reference:** [GitHub documentation | privately reporting vulnerabilities](https://docs.github.com/en/code-security/how-tos/report-and-fix-vulnerabilities/report-privately)
+**Reference:** [GitHub | Privately reporting vulnerabilities](https://docs.github.com/en/code-security/how-tos/report-and-fix-vulnerabilities/report-privately)
