@@ -2,104 +2,114 @@
 
 **SECURITY · GOVERNANCE · ENGINEERING QUALITY · RESPONSIBLE AUTOMATION**
 
-A unified framework for documenting, developing, reviewing and maintaining repositories under **[DFerreira-pro](https://github.com/DFerreira-pro)**.
-
 ![GOVERNANCE](https://img.shields.io/badge/GOVERNANCE-09485A?style=flat-square) ![SECURITY](https://img.shields.io/badge/SECURITY-09485A?style=flat-square) ![DOCUMENTATION](https://img.shields.io/badge/DOCUMENTATION-09485A?style=flat-square) ![QUALITY](https://img.shields.io/badge/QUALITY-09485A?style=flat-square)
+
+Common standards for repositories maintained under [DFerreira-pro](https://github.com/DFerreira-pro).
 
 ---
 
-## Purpose & Scope
+## 1. Purpose & Scope
 
-This public `.github` repository defines shared **community, security and contribution conventions**. Its goal is to make projects clear, reproducible, maintainable and safe to publish, without forcing every project into the same architecture or workflow.
+Apply the controls in this framework to the documentation, development, review, release and maintenance of repositories. Adjust implementation depth to the project's scope and risk; do not reduce confidentiality, authorization or publication safeguards.
 
-The standards are designed for work spanning:
+**Applicable domains**
 
-- **Governance, Security & Compliance**: risk, privacy, security controls, assessment methodologies and responsible use of technology.
-- **Infrastructure & Automation**: networking, servers, virtualization, monitoring, service management and deployment automation.
-- **Utility Scripts**: operational helpers, validation, configuration checks, audit support and repeatable procedures.
-- **Artificial Intelligence**: responsible AI adoption, security considerations, governance and practical automation.
+- **Governance, Security & Compliance:** risk management, privacy, assessments and security controls.
+- **Infrastructure & Automation:** networking, servers, virtualization, cloud, monitoring and service management.
+- **Utility Scripts:** installation, configuration, verification, maintenance and audit support.
+- **Artificial Intelligence:** governance, responsible adoption, assessments and operational automation.
 
-**Applicability:** these principles serve as a baseline for repositories owned by this account. Individual projects may document justified exceptions or stricter requirements. Guidance in this README does not, by itself, configure enforcement settings across GitHub repositories.
+Repository-specific standards may impose stricter controls or document justified exceptions. This framework establishes requirements; it does not automatically apply GitHub settings to other repositories.
 
-## Governance Principles
+## 2. Governance Principles
 
-| Principle | Expected practice |
+| Principle | Requirement |
 | :--- | :--- |
-| **Security by design** | Evaluate threats, privileges, dependencies, secrets and operational impact before publishing or deploying. |
-| **Privacy & confidentiality** | Minimize data exposure; never disclose customer environments, personal data, credentials or sensitive topology. |
-| **Documentation first** | Explain purpose, requirements, installation, configuration, validation and limitations at a level appropriate to the project. |
-| **Reproducibility** | Pin or document compatible versions, assumptions and execution context; prefer idempotent operations. |
-| **Least privilege** | Avoid unnecessary administrative permissions, unsafe defaults and hard-coded access. |
-| **Change control** | Review meaningful changes, maintain understandable commits and document breaking behavior. |
-| **Evidence over claims** | Distinguish design intent from implemented, tested and production-proven behavior. |
-| **Continuous improvement** | Revise the baseline as tools, risks and standards evolve. |
+| **Security by design** | Evaluate privileges, threats, dependencies, network exposure and operational effects before release. |
+| **Privacy & confidentiality** | Exclude secrets, unauthorized personal data, customer information and sensitive infrastructure details from public artifacts and history. |
+| **Documentation** | State purpose, requirements, instructions, validation methods, limitations and maintenance status accurately. |
+| **Reproducibility** | Identify supported versions, execution conditions and relevant assumptions; use idempotent procedures where feasible. |
+| **Least privilege** | Grant only the access necessary for each user, process, integration and workflow. |
+| **Change control** | Maintain traceable, scoped commits; assess security and compatibility before accepting significant changes. |
+| **Evidence-based claims** | Distinguish experimental, tested and production-validated behavior. Do not imply certification or compliance without evidence. |
+| **Continuous improvement** | Review standards when technical, operational or regulatory conditions change. |
 
-## Repository Lifecycle
+## 3. Repository Lifecycle
 
-| Stage | Minimum outcome |
+| Stage | Required outcome |
 | :--- | :--- |
-| **01 · Define** | Objective, audience, intended use, maintainer and repository visibility are clear. |
-| **02 · Design** | Scope, dependencies, assumptions, risks and required privileges are identified. |
-| **03 · Build** | Changes are small, understandable and tracked in version control. |
-| **04 · Validate** | Relevant checks are executed and limitations or untested scenarios are recorded. |
-| **05 · Release** | Documentation, license decision, sensitive-data review and release status are checked. |
-| **06 · Maintain** | Bugs, vulnerabilities, dependencies and supported versions are reviewed proportionally to risk. |
-| **07 · Archive** | Deprecated or abandoned projects are identified and archived when appropriate. |
+| **01 · Define** | Document purpose, audience, owner, scope and visibility. |
+| **02 · Design** | Identify assumptions, dependencies, permissions, security boundaries and risks. |
+| **03 · Build** | Track source and documentation changes in version control. |
+| **04 · Validate** | Perform relevant tests and record limitations, evidence and known issues. |
+| **05 · Release** | Complete security and privacy review, confirm licensing and approve publication. |
+| **06 · Maintain** | Triage vulnerabilities, incidents, dependencies and supported versions according to risk. |
+| **07 · Archive** | Mark unmaintained or superseded projects clearly and archive when appropriate. |
 
-## Publication & Security Gates
+## 4. Publication & Security Gates
 
-![ATTENTION / REVIEW REQUIRED mandatory checks before publication](assets/attention.png)
+![Attention | review required](assets/attention.png)
 
 **Before making a repository public:**
 
-- Confirm ownership and authorization to publish **all** code, configuration, screenshots, datasets and documentation.
-- Inspect the **entire Git history**, not only current files, for secrets and private information.
-- Remove or anonymize hostnames, IP addresses, domains, usernames, customer names, certificates, keys, tokens, backups and environment details when sensitive.
-- Review dependencies, license compatibility and any third-party intellectual property.
-- Ensure examples contain fictitious data and clearly distinguish lab configurations from production recommendations.
-- Evaluate whether the release might expose exploitable configurations or operational details.
+1. Confirm ownership and publication rights for source code, documentation, images, datasets and configuration.
+2. Inspect current files **and the complete Git history**, including author metadata and removed files.
+3. Remove or anonymize sensitive hostnames, addresses, identities, customer records, certificates, logs and environment details.
+4. Verify that dependencies, licenses and third-party material permit the intended distribution.
+5. Replace operational data in examples with synthetic or sanitized values.
+6. Review potential misuse of configuration details, exposed endpoints and administrative routines.
+7. Confirm publication approval and the required repository settings before changing visibility.
 
-![CRITICAL / STOP AND REMEDIATE prevent exposure of confidential information](assets/critical.png)
+![Critical | stop and remediate](assets/critical.png)
 
-**Publication must stop** if credentials, private keys, access tokens, confidential customer information, personal data without a valid basis, or unauthorized production artifacts are discovered. Removing the value from the latest commit alone does **not** remove it from Git history. Revoke or rotate exposed credentials, assess impact and follow an appropriate history-remediation process before reconsidering publication.
+**Block publication** when credentials, private keys, access tokens, protected personal data, confidential customer information or unauthorized production artifacts are present. Rotate or revoke exposed credentials, assess impact and remediate Git history as required. Removing a value from the latest file revision is insufficient; previous objects and external copies may remain accessible.
 
-## Documentation Standard
+## 5. Documentation Standard
 
-Each project should offer a `README.md` proportionate to its complexity and risk. For scripts that administer infrastructure, use the following structure whenever relevant:
+Maintain a project-level `README.md` proportionate to its purpose and consequences of failure.
 
-| Section | What it should answer |
+| Topic | Required information, when applicable |
 | :--- | :--- |
-| **Overview** | What problem does the project solve, and for whom? |
-| **Status & scope** | Is it experimental, validated in a lab, maintained or deprecated? What is excluded? |
-| **Compatibility** | Supported operating systems, distributions, versions, architectures and prerequisites. |
-| **Security model** | Required access, privileges, credentials, network exposure and safeguards. |
-| **Installation / usage** | Exact execution steps, configuration parameters and safe defaults. |
-| **Validation** | How to verify correct operation; expected outputs and health checks. |
-| **Rollback / recovery** | How to undo changes, restore backups or recover from partial failure. |
-| **Known limitations** | Unsupported environments, assumptions, edge cases and residual risks. |
-| **Maintenance** | Ownership, change history, support policy and issue-reporting process. |
+| **Overview** | Problem, audience, intended use and project boundaries. |
+| **Status** | Experimental, lab-validated, maintained, deprecated or archived. |
+| **Compatibility** | Operating systems, distributions, versions, prerequisites and constraints. |
+| **Security model** | Access, privileges, secrets, network exposure and safeguards. |
+| **Installation & operation** | Reproducible procedures, configuration and safe defaults. |
+| **Verification** | Tests, expected output and operational health checks. |
+| **Recovery** | Backup, rollback, restoration and partial-failure handling. |
+| **Limitations** | Unsupported environments, assumptions and known risks. |
+| **Maintenance** | Change history, support boundaries and reporting channels. |
 
-Documentation must not claim certification, legal compliance, production readiness or security assurance unless supported by appropriate scope, evidence and verification.
+Do not claim formal certification, legal compliance or production readiness without defined scope and verifiable evidence.
 
-## Infrastructure & Automation Controls
+## 6. Infrastructure & Automation Controls
 
-For scripts, installers and post-installation automation, apply controls according to the consequence of failure:
+Apply controls proportionate to execution privileges and potential operational impact:
 
-- **Preflight checks:** validate OS/version, permissions, resources, network requirements and existing services.
-- **Safe execution:** provide clear prompts or explicit flags for destructive actions; avoid unreviewed remote-script execution.
-- **Idempotence:** repeated execution should not introduce avoidable configuration drift or duplicate changes.
-- **Change visibility:** log meaningful actions without printing passwords, tokens or other secrets.
-- **Service management:** document ports, firewall rules, access control, persistence and restart behavior.
-- **Recovery:** recommend backups/snapshots where appropriate and provide restoration or rollback guidance.
-- **Testing:** distinguish static checks, isolated lab testing and production validation; publish only supported claims.
+- **Preflight:** verify platform/version, privileges, resources, connectivity and existing services.
+- **Execution safety:** require explicit authorization for destructive operations; avoid unverified remote execution.
+- **Repeatability:** prevent unnecessary duplicate changes and configuration drift.
+- **Logging:** record significant actions without revealing secrets or sensitive data.
+- **Service exposure:** specify listeners, ports, firewall rules, access restrictions and service persistence.
+- **Recovery:** document backups, rollback steps and restoration checks where relevant.
+- **Validation:** distinguish static review, isolated testing, environment acceptance and production verification.
 
-![ATTENTION / REVIEW REQUIRED production changes require local validation](assets/attention.png)
+![Attention | review required](assets/attention.png)
 
-**Production use is environment-specific.** Generic scripts are reference implementations, not authorization to modify an environment. Review and adapt commands, maintenance windows, backup plans and security controls before execution.
+**Production execution requires environment-specific authorization and validation.** Generic scripts and examples do not constitute deployment approval. Confirm change windows, backups, compatibility and security controls before running them.
 
-## Contribution & Change Management
+## 7. Access & Change Control
 
-Use clear, scoped changes and an auditable review trail. Recommended commit subjects follow a lightweight **Conventional Commits** style:
+**Public Read · Owner-Controlled Write · No External Collaborators**
+
+- Public access is granted for reading, cloning and review; it does not include write permission.
+- Do not grant external collaborators direct write or administrative access unless an explicit, documented policy exception is approved.
+- External pull requests are proposals only. Merge, release and deployment require explicit owner authorization.
+- Protect the default branch against deletion and force pushes, subject to repository capabilities and documented maintenance procedures.
+- Review GitHub Apps, OAuth applications, deploy keys, tokens and workflow permissions before granting access; use read-only permissions by default.
+- Configure safeguards individually for every new repository. A document in `.github` does not enforce access restrictions by itself.
+
+Use scoped, auditable commits. Conventional Commit-style subjects are preferred where practical:
 
 ```text
 feat: add infrastructure preflight validation
@@ -110,48 +120,42 @@ chore: update repository metadata
 security: reduce default service privileges
 ```
 
-For substantial changes, prefer a pull request describing **purpose, scope, risk, validation evidence and rollback considerations**. Contributors should avoid unrelated modifications and must not include confidential data in issues, pull requests or logs.
+Follow the default [Contribution Policy](CONTRIBUTING.md) where published, or the specific policy of the affected repository.
 
-Project-specific contribution instructions take precedence over these shared conventions where they exist.
+## 8. Risk-Based Review
 
-## Risk-Based Review
-
-| Change level | Examples | Review expectations |
+| Change classification | Typical scope | Minimum review |
 | :--- | :--- | :--- |
-| **Routine** | Documentation corrections, nonfunctional formatting | Clarity and content review. |
-| **Elevated** | New dependencies, authentication changes, firewall changes, service installation | Compatibility, security impact, tests and recovery review. |
-| **Critical** | Destructive storage actions, identity changes, secret handling, public network exposure | Explicit risk assessment, independent review when feasible, tested recovery plan and controlled deployment. |
+| **Routine** | Documentation, formatting, nonfunctional changes | Accuracy and consistency. |
+| **Elevated** | Dependencies, authentication, network configuration or service changes | Compatibility, security, testing and recovery. |
+| **Critical** | Destructive operations, credentials, identity systems or public exposure | Explicit risk assessment, controlled approval and tested recovery where feasible. |
 
-![CRITICAL / STOP AND REMEDIATE generic scripts are not automatically production-ready](assets/critical.png)
+![Critical | stop and remediate](assets/critical.png)
 
-Deployment approval remains the responsibility of the authorized operator or organization. A repository being public, documented or passing automated checks does not constitute a production certification.
+**Stop release or deployment when critical safeguards are absent or unresolved critical risk is identified.** A public repository, passing automated check or documented procedure does not establish production suitability.
 
-## Shared Repository Files
+## 9. Shared Repository Files
 
-This repository is intended to host reusable GitHub community files. They will be added incrementally, and each file becomes effective when it actually exists at a GitHub-supported path.
-
-| File or directory | Role |
+| File or directory | Function |
 | :--- | :--- |
-| `README.md` | Scope, principles and operating standards (this document). |
-| `CONTRIBUTING.md` | Contribution procedures and quality expectations. |
-| `SECURITY.md` | Vulnerability reporting and coordinated disclosure. |
-| `CODE_OF_CONDUCT.md` | Participation and collaboration expectations. |
-| `SUPPORT.md` | Support channels and boundaries. |
-| `.github/ISSUE_TEMPLATE/` | Structured bug reports and feature requests. |
-| `.github/PULL_REQUEST_TEMPLATE.md` | Standard pull request checklist, when created. |
+| `README.md` | Governance framework and operating principles. |
+| `SECURITY.md` | Security reporting and coordinated disclosure. |
+| `CONTRIBUTING.md` | Contribution, review and publication requirements, once published. |
+| `CODE_OF_CONDUCT.md` | Community conduct standards, if introduced. |
+| `SUPPORT.md` | Support scope and contact guidance, if introduced. |
+| `.github/ISSUE_TEMPLATE/` | Structured issue intake, if configured. |
+| `.github/PULL_REQUEST_TEMPLATE.md` | Pull request checklist, if configured. |
 
-**GitHub behavior:** eligible default community-health files in this public `.github` repository may be used by other repositories in the account **only when those repositories do not define their own applicable files**. This README is explanatory; it is not a policy engine. Branch protections, repository rules, security scanning and permissions must be configured separately. See [GitHub documentation](https://docs.github.com/en/communities/setting-up-your-project-for-healthy-contributions/creating-a-default-community-health-file).
+Supported default community files in this public `.github` repository are used by GitHub when the target repository does not provide its own corresponding file. Repository-specific settings, branch rules, scanning, permissions and deployment approvals must be configured independently. See [GitHub's default community health file documentation](https://docs.github.com/en/communities/setting-up-your-project-for-healthy-contributions/creating-a-default-community-health-file).
 
-A license is selected **per project**; this `.github` repository does not automatically assign a software license to other repositories.
+Software licenses are selected separately for each project; this repository does not license other repositories automatically.
 
-## Maintenance & Evolution
+## 10. Maintenance & Exceptions
 
-This is a living baseline. Changes should preserve clarity, reviewability and compatibility with the account's public profile identity. Stronger controls may be introduced as projects, collaborators and risk exposure grow. The absence of a planned document or workflow should not be represented as an implemented control.
+Maintain this framework under version control. Review changes for clarity, operational practicality and compatibility with existing policies. Record exceptions with an authorized decision, reason, scope, residual risk and review condition. Do not describe a planned document, automation or safeguard as already implemented.
 
 ---
 
-**Maintainer:** [DFerreira-pro](https://github.com/DFerreira-pro)  
+**Maintained by:** [DFerreira-pro](https://github.com/DFerreira-pro)  
 **Professional website:** [Linksafe TI](https://linksafe.com.br)  
 **LinkedIn:** [DFerreira](https://www.linkedin.com/in/dferreira-pro/)
-
-*Secure by design · Documented by default · Improved continuously*
